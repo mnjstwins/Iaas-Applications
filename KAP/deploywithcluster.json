@@ -96,8 +96,7 @@
       "defaultValue": "KAP+KyAnalyzer",
       "allowedValues": [
         "KAP",
-        "KAP+KyAnalyzer",
-        "KAP+KyAnalyzer+Zeppelin"
+        "KAP+KyAnalyzer"
       ]
     },
     "metastoreName": {
@@ -233,13 +232,6 @@
           {
             "subDomainSuffix": "kya",
             "destinationPort": 8080,
-            "accessModes": [
-              "webpage"
-            ]
-          },
-          {
-            "subDomainSuffix": "zep",
-            "destinationPort": 9090,
             "accessModes": [
               "webpage"
             ]
