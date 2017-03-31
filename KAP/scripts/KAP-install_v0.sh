@@ -11,7 +11,7 @@ ZEPPELIN_TARFILE=zeppelin-0.8.0-kylin.tar.gz
 KAP_FOLDER_NAME="${KAP_TARFILE%.tar.gz*}"
 KAP_INSTALL_BASE_FOLDER=/usr/local/kap
 KAP_TMPFOLDER=/tmp/kap
-KAP_SECURITY_TEMPLETE_URI=https://raw.githubusercontent.com/Kyligence/Iaas-Applications/master/KAP/files/kylinSecurity.xml
+KAP_SECURITY_TEMPLETE_URI=https://raw.githubusercontent.com/Kyligence/Iaas-Applications/kap225/KAP/files/kylinSecurity.xml
 KYANALYZER_FOLDER_NAME=kyanalyzer-server
 ZEPPELIN_FOLDER_NAME="${ZEPPELIN_TARFILE%.tar.gz*}"
 ZEPPELIN_INSTALL_BASE_FOLDER=/usr/local/zeppelin
@@ -90,7 +90,7 @@ EOL
     sleep 15
 
     echo "Trigger a build for sample cube"
-    nohup curl -X PUT --user "$adminuser":"$adminpassword" -H "Content-Type: application/json;charset=utf-8" -d '{ "startTime": 1325376000000, "endTime": 1456790400000, "buildType": "BUILD"}' http://localhost:7070/kylin/api/cubes/kylin_sales_cube/rebuild &
+    nohup curl -X PUT --user $adminuser:$adminpassword -H "Content-Type: application/json;charset=utf-8" -d '{ "startTime": 1325376000000, "endTime": 1456790400000, "buildType": "BUILD"}' http://localhost:7070/kylin/api/cubes/kylin_sales_cube/rebuild &
 }
 
 downloadAndUnzipKyAnalyzer() {

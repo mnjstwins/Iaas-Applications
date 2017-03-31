@@ -81,13 +81,13 @@
       "type": "int",
       "defaultValue": 2,
       "metadata": {
-        "description": "The number of nodes in the HDInsight cluster."
+        "description": "The number of region nodes in the HDInsight cluster."
       }
     },
     "edgeNodeSize": {
       "type": "string",
       "metadata": {
-        "description": "Size of the edge node that hosts the application"
+        "description": "Size of the edge node that hosts KAP"
       },
       "defaultValue": "Standard_D3",
       "allowedValues": [
@@ -224,7 +224,7 @@
         "installScriptActions": [
           {
             "name": "[concat('KAP-install-v0','-' ,uniquestring(variables('applicationName')))]",
-            "uri": "https://raw.githubusercontent.com/Kyligence/Iaas-Applications/kap22/KAP/scripts/KAP-install_v0.sh",
+            "uri": "https://raw.githubusercontent.com/Kyligence/Iaas-Applications/kap225/KAP/scripts/KAP-install_v0.sh",
             "parameters": "[concat(parameters('clusterLoginUserName'), ' ', parameters('clusterLoginPassword'), ' ', parameters('metastoreName'), ' ', parameters('appType'))]",
             "roles": [
               "edgenode"
