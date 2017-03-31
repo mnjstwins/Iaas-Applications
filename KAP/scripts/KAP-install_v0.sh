@@ -68,10 +68,10 @@ startKAP() {
     echo "Adding kylin user"
     useradd -r kylin
     chown -R kylin:kylin $KAP_INSTALL_BASE_FOLDER
-
-    echo "Starting KAP with kylin user"
-    ## su kylin
     export KYLIN_HOME=$KAP_INSTALL_BASE_FOLDER/$KAP_FOLDER_NAME
+
+    echo "Creating sample cube"
+    su kylin -c "$KYLIN_HOME/bin/sample.sh"
 
     ## Add index page to auto redirect to KAP 
     mkdir -p $KYLIN_HOME/tomcat/webapps/ROOT
@@ -83,11 +83,14 @@ startKAP() {
 </html>
 EOL
    
+    echo "Starting KAP with kylin user"
     # create default working dir /kylin
     su kylin -c "hdfs dfs -mkdir -p /kylin" 
     su kylin -c "$KYLIN_HOME/bin/kylin.sh start"
-    sleep 10
+    sleep 15
 
+    echo "Trigger a build for sample cube"
+    nohup curl -X PUT --user "$adminuser":"$adminpassword" -H "Content-Type: application/json;charset=utf-8" -d '{ "startTime": 1325376000000, "endTime": 1456790400000, "buildType": "BUILD"}' http://localhost:7070/kylin/api/cubes/kylin_sales_cube/rebuild &
 }
 
 downloadAndUnzipKyAnalyzer() {
