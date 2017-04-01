@@ -5,13 +5,13 @@ metastore=$3
 apptype=$4
 
 
-KAP_TARFILE=kap-2.2.5-GA-hbase1.x.tar.gz
+KAP_TARFILE=kap-2.3.0-GA-hbase1.x.tar.gz
 KYANALYZER_TARFILE=KyAnalyzer-2.1.3.tar.gz
 ZEPPELIN_TARFILE=zeppelin-0.8.0-kylin.tar.gz
 KAP_FOLDER_NAME="${KAP_TARFILE%.tar.gz*}"
 KAP_INSTALL_BASE_FOLDER=/usr/local/kap
 KAP_TMPFOLDER=/tmp/kap
-KAP_SECURITY_TEMPLETE_URI=https://raw.githubusercontent.com/Kyligence/Iaas-Applications/kap225/KAP/files/kylinSecurity.xml
+KAP_SECURITY_TEMPLETE_URI=https://raw.githubusercontent.com/Kyligence/Iaas-Applications/kap230/KAP/files/kylinSecurity.xml
 KYANALYZER_FOLDER_NAME=kyanalyzer-server
 ZEPPELIN_FOLDER_NAME="${ZEPPELIN_TARFILE%.tar.gz*}"
 ZEPPELIN_INSTALL_BASE_FOLDER=/usr/local/zeppelin
