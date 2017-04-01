@@ -71,7 +71,7 @@ startKAP() {
     export KYLIN_HOME=$KAP_INSTALL_BASE_FOLDER/$KAP_FOLDER_NAME
 
     echo "Creating sample cube"
-    su kylin -c "$KYLIN_HOME/bin/sample.sh"
+    su kylin -c "export SPARK_HOME=$KYLIN_HOME/spark && $KYLIN_HOME/bin/sample.sh"
 
     ## Add index page to auto redirect to KAP 
     mkdir -p $KYLIN_HOME/tomcat/webapps/ROOT
@@ -103,6 +103,7 @@ downloadAndUnzipKyAnalyzer() {
     echo "Unzipping KyAnalyzer"
     mkdir -p $KAP_INSTALL_BASE_FOLDER
     tar -zxvf $KAP_TMPFOLDER/$KYANALYZER_TARFILE -C $KAP_INSTALL_BASE_FOLDER
+    
 
     rm -rf $KAP_TMPFOLDER
 }
@@ -111,6 +112,7 @@ startKyAnalyzer() {
 
     echo "Starting KyAnalyzer with kylin user"
     export KYANALYZER_HOME=$KAP_INSTALL_BASE_FOLDER/$KYANALYZER_FOLDER_NAME
+    chown -R kylin:kylin $KYANALYZER_HOME
     $KYANALYZER_HOME/start-analyzer.sh
     sleep 10
 
