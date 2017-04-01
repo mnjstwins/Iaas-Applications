@@ -10,8 +10,7 @@
       "defaultValue": "KAP+KyAnalyzer",
       "allowedValues": [
         "KAP",
-        "KAP+KyAnalyzer",
-        "KAP+KyAnalyzer+Zeppelin"
+        "KAP+KyAnalyzer"
       ]
     },
     "clusterName": {
@@ -89,7 +88,7 @@
         "installScriptActions": [
           {
             "name": "[concat('KAP-install-v0','-' ,uniquestring(variables('applicationName')))]",
-            "uri": "https://raw.githubusercontent.com/Kyligence/Iaas-Applications/master/KAP/scripts/KAP-install_v0.sh",
+            "uri": "https://raw.githubusercontent.com/Kyligence/Iaas-Applications/kap230/KAP/scripts/KAP-install_v0.sh",
             "parameters": "[concat(parameters('clusterLoginUserName'), ' ', parameters('clusterLoginPassword'), ' ', parameters('metastoreName'), ' ', parameters('appType'))]",
             "roles": [
               "edgenode"
@@ -108,13 +107,6 @@
           {
             "subDomainSuffix": "kya",
             "destinationPort": 8080,
-            "accessModes": [
-              "webpage"
-            ]
-          },
-          {
-            "subDomainSuffix": "zep",
-            "destinationPort": 9090,
             "accessModes": [
               "webpage"
             ]
