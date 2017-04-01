@@ -69,7 +69,6 @@ startKAP() {
     useradd -r kylin
     chown -R kylin:kylin $KAP_INSTALL_BASE_FOLDER
     export KYLIN_HOME=$KAP_INSTALL_BASE_FOLDER/$KAP_FOLDER_NAME
-    export SPARK_HOME=$KYLIN_HOME/spark
 
     echo "Creating sample cube"
     su kylin -c "$KYLIN_HOME/bin/sample.sh"
@@ -87,7 +86,7 @@ EOL
     echo "Starting KAP with kylin user"
     # create default working dir /kylin
     su kylin -c "hdfs dfs -mkdir -p /kylin" 
-    su kylin -c "$KYLIN_HOME/bin/kylin.sh start"
+    su kylin -c "export SPARK_HOME=$KYLIN_HOME/spark && $KYLIN_HOME/bin/kylin.sh start"
     sleep 15
 
     echo "Trigger a build for sample cube"
