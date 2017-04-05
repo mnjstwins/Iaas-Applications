@@ -54,9 +54,9 @@ downloadAndUnzipKAP() {
     sed -i "s/KAP-ADMIN/$adminuser/g" kylin/WEB-INF/classes/kylinSecurity.xml
     sed -i "s/KAP-PASSWD/$adminpassword/g" kylin/WEB-INF/classes/kylinSecurity.xml
 
-    echo "Updating KAP metastore to $metastore"
-    cd $KAP_INSTALL_BASE_FOLDER/$KAP_FOLDER_NAME/conf
-    sed -i "s/kylin_default_instance/$metastore/g" kylin.properties
+    # echo "Updating KAP metastore to $metastore"
+    # cd $KAP_INSTALL_BASE_FOLDER/$KAP_FOLDER_NAME/conf
+    # sed -i "s/kylin_default_instance/$metastore/g" kylin.properties
 
     echo "Updating working dir"
     sed -i "s/kylin.env.hdfs-working-dir=\/kylin/kylin.env.hdfs-working-dir=wasb:\/\/\/kylin/g" kylin.properties    
@@ -71,7 +71,7 @@ startKAP() {
     export KYLIN_HOME=$KAP_INSTALL_BASE_FOLDER/$KAP_FOLDER_NAME
 
     # echo "Creating sample cube"
-    # su kylin -c "export SPARK_HOME=$KYLIN_HOME/spark && $KYLIN_HOME/bin/sample.sh"
+    su kylin -c "export SPARK_HOME=$KYLIN_HOME/spark && $KYLIN_HOME/bin/sample.sh"
 
     ## Add index page to auto redirect to KAP 
     mkdir -p $KYLIN_HOME/tomcat/webapps/ROOT
@@ -87,10 +87,10 @@ EOL
     # create default working dir /kylin
     su kylin -c "hdfs dfs -mkdir -p /kylin" 
     su kylin -c "export SPARK_HOME=$KYLIN_HOME/spark && $KYLIN_HOME/bin/kylin.sh start"
-    #sleep 15
+    sleep 15
 
     #echo "Trigger a build for sample cube"
-    #nohup curl -X PUT --user $adminuser:$adminpassword -H "Content-Type: application/json;charset=utf-8" -d '{ "startTime": 1325376000000, "endTime": 1456790400000, "buildType": "BUILD"}' http://localhost:7070/kylin/api/cubes/kylin_sales_cube/rebuild &
+    nohup curl -X PUT --user $adminuser:$adminpassword -H "Content-Type: application/json;charset=utf-8" -d '{ "startTime": 1325376000000, "endTime": 1456790400000, "buildType": "BUILD"}' http://localhost:7070/kylin/api/cubes/kylin_sales_cube/rebuild &
 }
 
 downloadAndUnzipKyAnalyzer() {

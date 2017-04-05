@@ -67,16 +67,6 @@
         "description": "The type of the HDInsight cluster to create."
       }
     },
-    "clusterVersion": {
-      "type": "string",
-      "metadata": {
-        "description": "The version of HDI."
-      },
-      "defaultValue": "3.5",
-      "allowedValues": [
-        "3.5"
-      ]
-    },
     "clusterWorkerNodeCount": {
       "type": "int",
       "defaultValue": 2,
@@ -109,13 +99,6 @@
         "KAP+KyAnalyzer",
         "KAP"
       ]
-    },
-    "metastoreName": {
-      "type": "string",
-      "defaultValue": "kylin_default_instance",
-      "metadata": {
-        "description": "The name of metadata store for KAP"
-      }
     }
   },
   "variables": {
@@ -147,7 +130,7 @@
       ],
       "tags": {},
       "properties": {
-        "clusterVersion": "[parameters('clusterVersion')]",
+        "clusterVersion": "3.5",
         "osType": "Linux",
         "clusterDefinition": {
           "kind": "[parameters('clusterType')]",
@@ -225,7 +208,7 @@
           {
             "name": "[concat('KAP-install-v0','-' ,uniquestring(variables('applicationName')))]",
             "uri": "https://raw.githubusercontent.com/Kyligence/Iaas-Applications/kap230/KAP/scripts/KAP-install_v0.sh",
-            "parameters": "[concat(parameters('clusterLoginUserName'), ' ', parameters('clusterLoginPassword'), ' ', parameters('metastoreName'), ' ', parameters('appType'))]",
+            "parameters": "[concat(parameters('clusterLoginUserName'), ' ', parameters('clusterLoginPassword'), ' ', ' ', ' ', parameters('appType'))]",
             "roles": [
               "edgenode"
             ]
