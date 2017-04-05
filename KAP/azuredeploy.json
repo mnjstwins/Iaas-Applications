@@ -33,13 +33,6 @@
         "description": "The password of the account."
       }
     },
-    "metastoreName": {
-      "type": "string",
-      "defaultValue": "kylin_default_instance",
-      "metadata": {
-        "description": "The name of metadata store for KAP"
-      }
-    },
     "galleryPackageIdentity": {
       "type": "string",
       "metadata": {
@@ -89,7 +82,7 @@
           {
             "name": "[concat('KAP-install-v0','-' ,uniquestring(variables('applicationName')))]",
             "uri": "https://raw.githubusercontent.com/Kyligence/Iaas-Applications/kap230/KAP/scripts/KAP-install_v0.sh",
-            "parameters": "[concat(parameters('clusterLoginUserName'), ' ', parameters('clusterLoginPassword'), ' ', parameters('metastoreName'), ' ', parameters('appType'))]",
+            "parameters": "[concat(parameters('clusterLoginUserName'), ' ', parameters('clusterLoginPassword'), ' ', parameters('appType'))]",
             "roles": [
               "edgenode"
             ]

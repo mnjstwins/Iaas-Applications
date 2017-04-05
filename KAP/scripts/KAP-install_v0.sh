@@ -1,8 +1,8 @@
 #! /bin/bash
 adminuser=$1
 adminpassword=$2
-metastore=$3
-apptype=$4
+#metastore=$3
+apptype=$3
 
 
 KAP_TARFILE=kap-2.3.0-GA-hbase1.x.tar.gz
@@ -59,6 +59,7 @@ downloadAndUnzipKAP() {
     # sed -i "s/kylin_default_instance/$metastore/g" kylin.properties
 
     echo "Updating working dir"
+    cd $KAP_INSTALL_BASE_FOLDER/$KAP_FOLDER_NAME/conf
     sed -i "s/kylin.env.hdfs-working-dir=\/kylin/kylin.env.hdfs-working-dir=wasb:\/\/\/kylin/g" kylin.properties    
 
     rm -rf $KAP_TMPFOLDER
