@@ -71,7 +71,10 @@ startKAP() {
     chown -R kylin:kylin $KAP_INSTALL_BASE_FOLDER
     export KYLIN_HOME=$KAP_INSTALL_BASE_FOLDER/$KAP_FOLDER_NAME
 
-    # echo "Creating sample cube"
+    echo "Create default working dir /kylin"
+    su kylin -c "hdfs dfs -mkdir -p /kylin" 
+
+    echo "Creating sample cube"
     su kylin -c "export SPARK_HOME=$KYLIN_HOME/spark && $KYLIN_HOME/bin/sample.sh"
 
     ## Add index page to auto redirect to KAP 
@@ -85,8 +88,6 @@ startKAP() {
 EOL
    
     echo "Starting KAP with kylin user"
-    # create default working dir /kylin
-    su kylin -c "hdfs dfs -mkdir -p /kylin" 
     su kylin -c "export SPARK_HOME=$KYLIN_HOME/spark && $KYLIN_HOME/bin/kylin.sh start"
     sleep 15
 
