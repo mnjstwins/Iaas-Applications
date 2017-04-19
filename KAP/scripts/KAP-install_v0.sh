@@ -74,6 +74,7 @@ startKAP() {
     echo "Create default working dir /kylin"
     su kylin -c "hdfs dfs -mkdir -p /kylin" 
 
+    echo "bypass" > $KYLIN_HOME/bin/check-env-bypass
     echo "Creating sample cube"
     su kylin -c "export SPARK_HOME=$KYLIN_HOME/spark && $KYLIN_HOME/bin/sample.sh"
 
