@@ -7,7 +7,7 @@ apptype=$4
 kyaccountToken=$5
 
 BRANCH_NAME=master
-KAP_TARFILE=kap-2.3.5-GA-hbase1.x.tar.gz
+KAP_TARFILE=kap-2.3.7-GA-hbase1.x.tar.gz
 KYANALYZER_TARFILE=KyAnalyzer-2.3.2.tar.gz
 KYANALYZER_FOLDER_NAME=kyanalyzer-server-2.3.2
 ZEPPELIN_TARFILE=zeppelin-0.8.0-kylin.tar.gz
