@@ -7,7 +7,7 @@ apptype=$4
 clusterName=$5
 kyaccountToken=$6
 
-BRANCH_NAME=master
+BRANCH_NAME=kap237-mp
 KAP_TARFILE=kap-2.3.7-GA-hbase1.x.tar.gz
 KYANALYZER_TARFILE=KyAnalyzer-2.3.2.tar.gz
 KYANALYZER_FOLDER_NAME=kyanalyzer-server-2.3.2
