@@ -70,7 +70,7 @@
       "type": "Microsoft.HDInsight/clusters/applications",
       "apiVersion": "[variables('clusterApiVersion')]",
       "properties": {
-        "marketPlaceIdentifier": "[Kyligence]",
+        "marketPlaceIdentifier": "['Kyligence']",
         "computeProfile": {
           "roles": [
             {
