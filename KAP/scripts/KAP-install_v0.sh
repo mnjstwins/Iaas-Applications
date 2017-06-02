@@ -76,8 +76,8 @@ downloadAndUnzipKAP() {
     cd $KAP_INSTALL_BASE_FOLDER/$KAP_FOLDER_NAME/conf
     sed -i "s/kylin_default_instance/$metastore/g" kylin.properties
 
-    #echo "Updating working dir"
-    #sed -i "s/kylin.env.hdfs-working-dir=\/kylin/kylin.env.hdfs-working-dir=wasb:\/\/\/kylin/g" kylin.properties
+    echo "Updating working dir"
+    sed -i "s/kylin.env.hdfs-working-dir=\/kylin/kylin.env.hdfs-working-dir=wasb:\/\/\/kylin/g" kylin.properties
 
 
     if [[ ! -z $kyaccountToken ]]
