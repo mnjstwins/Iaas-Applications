@@ -60,7 +60,7 @@ downloadAndUnzipKAP() {
     echo "Updating KAP admin account"
     if [ "$adminpassword" == "changeItNow" ] || [ "$adminpassword" == "" ]
     then
-        adminpassword=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 12 | head -n 1`
+     #  adminpassword=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 12 | head -n 1`
         echo "The initial password for administrator account '$adminuser' is '$adminpassword'. "
     fi
 
